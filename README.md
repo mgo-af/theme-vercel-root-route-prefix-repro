@@ -100,6 +100,8 @@ In addition to telling consuming sites how to build MDX pages, the `theme` expor
 
 Includes a small handful of dependencies for the Gatsby API's to build MDX pages and read from file structure.
 
+Also wraps `Layout` and provides those to sites using the theme via an `MDXProvider`, in order to be able to use links in MDX in consuming sites.
+
 #### `/docs`
 
 Example site that ships with the theme package.

@@ -1,6 +1,5 @@
 import React from "react";
 import "./Layout.css";
-
 const Layout = ({ children, pageContext }) => {
   let { title, description } = pageContext.frontmatter;
 
