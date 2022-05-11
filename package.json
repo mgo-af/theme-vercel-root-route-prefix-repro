@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "workspaces": [
+    "theme",
+    "docs"
+  ],
+  "scripts": {
+    "start": "yarn workspace docs develop",
+    "build": "yarn workspace docs build"
+  }
+}
