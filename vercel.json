@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "public": true,
+  "trailingSlash": true,
+  "builds": [
+    {
+      "src": "docs/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "public"
+      }
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "permanent": true,
+      "destination": "/vercelredirects"
+    }
+  ]
+}
