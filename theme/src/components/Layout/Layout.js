@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import "./Layout.css";
 
 const Layout = ({ children, pageContext }) => {
   let { title, description } = pageContext.frontmatter;
@@ -11,6 +11,7 @@ const Layout = ({ children, pageContext }) => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
+          height: "100%",
         }}
       >
         <div
@@ -18,7 +19,7 @@ const Layout = ({ children, pageContext }) => {
             flex: "1 1 auto",
             flexDirection: "row",
             display: "flex",
-            backgroundColor: "red",
+            // backgroundColor: "silver",
           }}
         >
           {/* Main content */}
@@ -37,8 +38,6 @@ const Layout = ({ children, pageContext }) => {
                 flexDirection: "column",
                 display: "flex",
                 padding: "24px",
-                border: "1px dashed",
-                borderColor: "red",
               }}
             >
               {/* Heading and description */}
@@ -50,7 +49,7 @@ const Layout = ({ children, pageContext }) => {
                 </div>
                 {description ? (
                   <div style={{ fontSize: 3, paddingBottom: "8px" }}>
-                    {description}
+                    <p>{description}</p>
                   </div>
                 ) : null}
               </div>

@@ -14,7 +14,7 @@ module.exports = (themeOptions) => ({
       options: {
         extensions: [".mdx", ".md"],
         defaultLayouts: {
-          default: require.resolve("./src/components/Layout.js"),
+          default: require.resolve("./src/components/Layout/Layout.js"),
         },
       },
     },

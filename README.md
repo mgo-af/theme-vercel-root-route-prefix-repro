@@ -9,7 +9,7 @@
 
 ### Project structure:
 
-## `/theme`
+#### `/theme`
 
 Gatsby theme that includes the SSG logic and does all the work.
 
@@ -17,11 +17,11 @@ Gatsby theme that includes the SSG logic and does all the work.
 
 The logic in `gatsby-node.js` is all contained in the `createPages` function.
 
-In addition to telling consuming sites how to build MDX pages, the `theme` exports a single component to be used by consuming sites, a `Layout` component, from `/src/components/Layout`.
+In addition to telling consuming sites how to build MDX pages, the `theme` exports a single component to be used by consuming sites, a `Layout` component, from `/src/components/Layout`. There are basic global styles applied using standard CSS in `Layout.css`, just to demonstrate that the theme is being consumed by sites in which it is installed.
 
-Includes some dependencies for the Gatsby API's to build MDX pages and read from file structure.
+Includes a small handful of dependencies for the Gatsby API's to build MDX pages and read from file structure.
 
-## `/docs`
+#### `/docs`
 
 Example site that ships with the theme package.
 

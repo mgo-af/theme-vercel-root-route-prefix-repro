@@ -1,0 +1,34 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body,
+#___gatsby {
+  min-height: 100%;
+}
+
+#___gatsby {
+  isolation: isolate;
+}
+
+body {
+  color: #004466;
+  background-color: #ff6347;
+  font-family: "Garamond, serif;";
+}
+h1 {
+  font-size: 6rem;
+}
+p {
+  font-size: 1.5rem;
+  max-width: 65%;
+  line-height: 2rem;
+}
