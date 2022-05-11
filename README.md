@@ -6,6 +6,8 @@ An extremely minimal Gatsby theme to demonstrate working with prefix-paths and r
 
 ### Why
 
+The Gatsby theme allows us to bootstrap a site in the `/docs` directory in projects we're building.
+
 We want to make our deployed docs sites available at `parentproject.com/docs-site-name`, where `docs-site-name` is the name of a docs site bootstrapped using the theme.
 
 ### What should happen
