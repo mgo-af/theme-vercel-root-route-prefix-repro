@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: "/vercelredirect",
+  pathPrefix: "/vercelredirects",
   plugins: [
     {
       resolve: `gatsby-theme-root-prefix-route-repro`,
