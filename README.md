@@ -39,18 +39,8 @@ In order to make that work, we need each deployed site that we intend to proxy t
 ### What have you done so far
 
 1. _Set up the alias path_
-   To create the path aliasing/redirect behavior we want (e.g., `/` redirects to `/docs-site-name`), in the consuming site's `gatsby-config.js` file, we set a `--prefix-paths` flag in the build script in the `/docs` directory:
+   To make the site available from `parentproject.com/docs-site-name`, we need to create the path aliasing/redirect behavior we want (e.g., `/` redirects to `/docs-site-name`), in the consuming site's `gatsby-config.js` file. We set a `--prefix-paths` flag in the build script in the `/docs` directory.
 
-```
-// package.json
-
-"scripts":  {
-  "build": "gatsby build --prefix-paths"
-}
-
-```
-
-2. _Add pathPrefix to gatsby-config_
    For the purposes of this demonstration, we're setting the value of our prefix path to be `/vercelredirects`, and instructing Gatsby to use that for the `/docs` directory in its `gatsby-config.js` file:
 
 ```
@@ -68,9 +58,38 @@ module.exports = {
 
 ```
 
-3. _In `vercel.json`, we've tried using the `redirects` and `rewrites` properties in different combinations with different parameters_.
+2. _Update package.json_
 
-Have tried the instructions at [https://vercel.com/docs/project-configuration#legacy/routes/upgrading](https://vercel.com/docs/project-configuration#legacy/routes/upgrading).
+In `/docs` directory, update `package.json` with a build script that uses the `--prefix-paths` flag:
+
+```
+// package.json
+
+"scripts":  {
+  "build": "gatsby build --prefix-paths"
+}
+
+```
+
+3. _Update vercel.json_
+   The `--prefix-paths` flag tells Gatsby to prefix paths used in the `Link` component and `navigate` helper with the `pathPrefix` value assigned in the `gatsby-config.js` file. But `--prefix-paths` don't change where built files get stored in the build directory. That creates a mismatch between links on the site and the actual paths to the files.
+
+So we need to define a route in `vercel.json` that that proxies `/vercelredirects/*` to `/*` so that behind the scenes a path like `/vercelredirects/page-2` will find `/page-2.html` in the build directory.
+
+```
+// vercel.json
+"redirects": [
+    {
+      "source": "/",
+      "permanent": true,
+      "destination": "/vercelredirects"
+    }
+  ],
+  "rewrites": [{ "source": "/vercelredirects(/.*)?", "destination": "/docs$1" }]
+
+```
+
+We've tried using the `redirects` and `rewrites` properties in different combinations with different parameters, following the instructions at [https://vercel.com/docs/project-configuration#legacy/routes/upgrading](https://vercel.com/docs/project-configuration#legacy/routes/upgrading).
 
 ### How to use this directory
 
