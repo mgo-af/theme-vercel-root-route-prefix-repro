@@ -18,5 +18,5 @@
       "destination": "/vercelredirects"
     }
   ],
-  "rewrites": [{ "source": "/vercelredirects(/.*)?", "destination": "/docs/" }]
+  "rewrites": [{ "source": "/vercelredirects(/.*)?", "destination": "/docs" }]
 }
