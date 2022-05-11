@@ -1,7 +1,6 @@
 {
   "version": 2,
   "public": true,
-  "trailingSlash": true,
   "builds": [
     {
       "src": "docs/package.json",
