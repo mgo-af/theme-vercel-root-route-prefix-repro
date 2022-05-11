@@ -11,5 +11,5 @@
       }
     }
   ],
-  "routes": [{ "src": "//vercelredirects(/.*)?", "dest": "/docs$1" }]
+  "routes": [{ "src": "/vercelredirects(/.*)?", "dest": "/docs$1" }]
 }
