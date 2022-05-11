@@ -20,11 +20,13 @@ Defining a route in `vercel.json` that proxies `/docs-site-name/*` to `/*` shoul
 
 ### What is currently happening
 
+In Vercel, we set the Root directory for this project to be `docs`. The build command runs the build command as expected.
+
 Navigating to a path like `/docs-site-name/page-2` results in a 404, because there's a mismatch between the links on the site and the actual paths to the files.
 
 ### What have you tried
 
-To create the redirect behavior we want, e.g., `/` redirects to `/docs-site-name`, in the consuming site's `gatsby-config.js` file, we set a `--prefix-paths` flag in the build script:
+To create the path aliasing/redirect behavior we want (e.g., `/` redirects to `/docs-site-name`), in the consuming site's `gatsby-config.js` file, we set a `--prefix-paths` flag in the build script:
 
 ```
 // package.json
@@ -34,8 +36,6 @@ To create the redirect behavior we want, e.g., `/` redirects to `/docs-site-name
 }
 
 ```
-
-In Vercel, we set the Root directory for this project to be `docs`. The build command runs the build command as expected.
 
 For the purposes of this demonstration, we're calling setting the value of our prefix path to `vercelredirects`, and instructing Gatsby to use that for the `/docs` directory in its `gatsby-config.js` file:
 
