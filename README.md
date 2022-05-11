@@ -2,7 +2,7 @@
 
 ### What is this
 
-An extremely minimal Gatsby theme to demonstrate working with prefix-paths and root route redirects in Vercel.
+An extremely minimal Gatsby theme to demonstrate working with path aliasing and root route redirects in Vercel.
 
 ### Why
 
@@ -10,15 +10,21 @@ A Gatsby theme allows us to bootstrap a site in the `/docs` directory in project
 
 We want to make our deployed docs sites available at `parentproject.com/docs-site-name`, where `docs-site-name` is the name of a docs site bootstrapped using the theme.
 
+It's not working as expected, and our theory is that this is somehow related to our `vercel.json` configuration.
+
 ### What we want to happen
 
-A website at `parentproject.com`, can reference the site at `parentproject.com/docs-site-name` by setting the values in the `rewrites` array in `parentproject.com`'s `vercel.json` file, so that a path like `parentproject.com/docs-site-name/page-2` points at the site built at `vercelredirects`, and paths at that site find the correct files in the build directory.
+A website at `parentproject.com`, can reference the site at `parentproject.com/docs-site-name` by setting the values in the `rewrites` array in `parentproject.com`'s (that is, its own) `vercel.json` file, so that a path like `parentproject.com/docs-site-name/page-2` points at the site built at `vercelredirects`, and paths at that site find the correct files in the build directory at the site being proxied.
 
 ### What should happen
 
 Defining a route in `vercel.json` that proxies `/docs-site-name/*` to `/*` should mean that behind the scenes, a path like `/docs-site-name/page-2` will find `/page-2.html` in the build directory.
 
+Instructing Vercel to redirect should allow the root route `/` at the deployment for the child site to redirect to a path alias, e.g. `/docs-site-name`; furthermore, parentsite.com/docs-site-name should proxy the deployed site as well.
+
 ### What is currently happening
+
+![](https://media.giphy.com/media/iEaCrjL4efsIUfH4ck/giphy.gif)
 
 ✅ In Vercel, we set the Root directory for this project to be `docs`. The build command runs the build command as expected, and we can successfully deploy to Vercel.
 
