@@ -11,6 +11,11 @@
       }
     }
   ],
-
-  "rewrites": [{ "source": "/vercelredirects(/.*)?", "destination": "/docs$1" }]
+  "redirects": [
+    {
+      "source": "/",
+      "permanent": true,
+      "destination": "/vercelredirects"
+    }
+  ]
 }

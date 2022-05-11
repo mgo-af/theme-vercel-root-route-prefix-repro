@@ -68,7 +68,9 @@ module.exports = {
 
 ```
 
-In `vercel.json`, we've tried using the `redirects` and `rewrites` properties....
+3. _In `vercel.json`, we've tried using the `redirects` and `rewrites` properties in different combinations with different parameters_.
+
+Have tried the instructions at [https://vercel.com/docs/project-configuration#legacy/routes/upgrading](https://vercel.com/docs/project-configuration#legacy/routes/upgrading).
 
 ### How to use this directory
 
