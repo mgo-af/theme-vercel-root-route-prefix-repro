@@ -1,4 +1,4 @@
-# Minimal repro for root route prefixing with Gatsby, yarn workspaces, and Vercel deployments
+# Minimal repro for root route prefixing with Gatsby, yarn workspaces, and Vercel deployments: theme
 
 ### How to use
 
