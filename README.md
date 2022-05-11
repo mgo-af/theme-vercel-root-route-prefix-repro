@@ -20,9 +20,13 @@ Defining a route in `vercel.json` that proxies `/docs-site-name/*` to `/*` shoul
 
 ### What is currently happening
 
-In Vercel, we set the Root directory for this project to be `docs`. The build command runs the build command as expected, and we can successfully deploy to `this-project.vercel.app/docs-site-name`.
+✅ In Vercel, we set the Root directory for this project to be `docs`. The build command runs the build command as expected, and we can successfully deploy to Vercel.
 
-Navigating to a path like `/docs-site-name/page-2` results in a 404, because there's a mismatch between the links on the site and the actual paths to the files.
+❌ The root route path in the deployment is _not_ redirecting from `/` to the proxy path (for the purposes of this demo, `/vercelredirects`). [This is confirmed by observing the contents of vercel.json, and by observing the URL when navigating to the deployment at root route, https://theme-vercel-root-route-prefix-repro.vercel.app](https://theme-vercel-root-route-prefix-repro.vercel.app). **_*Our theory is that this is related to our settings in `vercel.json`.*_**
+
+✅ Gatsby's `--prefix-path` build command successfully points to the path alias (for the purposes of this demo, that `/vercelredirects`). [This is confirmed by observing the Vercel build directory, the `/docs` subdirectory build command in package.json, and observing the URL when navigating to the deployment, and when clicking on the link to `/page-2`](https://theme-vercel-root-route-prefix-repro.vercel.app/vercelredirect/page-2). Observe that `vercelredirect` is pushed onto the path for the built and deployed site.
+
+❌ Navigating to a path like `/docs-site-name/page-2` results in a 404, presumably because there's a mismatch between the links on the site and the actual paths to the files. **_*Our theory is that this is related to our settings in `vercel.json`.*_**
 
 ### What have you done so far
 
