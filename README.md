@@ -12,9 +12,13 @@ We want to make our deployed docs sites available at `parentproject.com/docs-sit
 
 Defining a route in `vercel.json` that proxies `/docs-site-name/*` to `/*` should mean that behind the scenes, a path like `/docs-site-name/page-2` will find `/page-2.html` in the build directory.
 
+In the consuming site's `gatsby-config.js` file, the `--prefix-paths` flag needs to be set to whatever the name of the prefix is you intend to use. For the purposes of this demonstration, we're calling this one `vercelredirects`.
+
+This means that at `parentproject.com`, we should be able to reference the site at `parentproject.com/vercelredirects`, and a path like `parentproject.com/vercelredirects/page-2` should find the correct file in the build directory.
+
 ### What is currently happening and why is it a problem
 
-Currently, using the `--prefix-paths` in the consuming site's `gatsby-config.js` file doesn't work in deployment. So navigating to a path like `/docs-site-name/page-2` results in a 404, because there's a mismatch between the links on the site and the actual paths to the files.
+Navigating to a path like `/docs-site-name/page-2` results in a 404, because there's a mismatch between the links on the site and the actual paths to the files.
 
 ### What have we tried
 
