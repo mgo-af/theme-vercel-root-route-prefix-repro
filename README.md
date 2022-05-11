@@ -31,7 +31,7 @@ In the consuming site's `gatsby-config.js` file, there's a `--prefix-paths` flag
 
 ```
 
-In Vercel, we set the Root directory for this project to be `docs`, and the build command runs the build command as expected.
+In Vercel, we set the Root directory for this project to be `docs`. The build command runs the build command as expected.
 
 For the purposes of this demonstration, we're calling setting the value of our prefix path to `vercelredirects`, and instructing Gatsby to use that for the `/docs` directory in its `gatsby-config.js` file:
 
