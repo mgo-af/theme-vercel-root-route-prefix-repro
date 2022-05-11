@@ -3,7 +3,7 @@
   "public": true,
   "builds": [
     {
-      "src": "package.json",
+      "src": "docs/package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "public"
@@ -11,7 +11,7 @@
     }
   ],
   "routes": [
-    { "src": "/vercelredirects(/.*)?", "dest": "$1" },
+    { "src": "/vercelredirects(/.*)?", "dest": "/docs$1" },
     {
       "src": "/",
       "status": 301,
