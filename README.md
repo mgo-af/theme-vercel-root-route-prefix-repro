@@ -12,7 +12,7 @@ We want to make our deployed docs sites available at `parentproject.com/docs-sit
 
 ### What we want to happen
 
-A website at `parentproject.com`, can reference the site at `parentproject.com/vercelredirects` by setting the values in the `rewrites` array in `parentproject.com`'s `vercel.json` file, so that a path like `parentproject.com/vercelredirects/page-2` points at the site built at `vercelredirects`, and paths at that site find the correct files in the build directory.
+A website at `parentproject.com`, can reference the site at `parentproject.com/docs-site-name` by setting the values in the `rewrites` array in `parentproject.com`'s `vercel.json` file, so that a path like `parentproject.com/docs-site-name/page-2` points at the site built at `vercelredirects`, and paths at that site find the correct files in the build directory.
 
 ### What should happen
 
@@ -20,13 +20,14 @@ Defining a route in `vercel.json` that proxies `/docs-site-name/*` to `/*` shoul
 
 ### What is currently happening
 
-In Vercel, we set the Root directory for this project to be `docs`. The build command runs the build command as expected.
+In Vercel, we set the Root directory for this project to be `docs`. The build command runs the build command as expected, and we can successfully deploy to `this-project.vercel.app/docs-site-name`.
 
 Navigating to a path like `/docs-site-name/page-2` results in a 404, because there's a mismatch between the links on the site and the actual paths to the files.
 
-### What have you tried
+### What have you done so far
 
-To create the path aliasing/redirect behavior we want (e.g., `/` redirects to `/docs-site-name`), in the consuming site's `gatsby-config.js` file, we set a `--prefix-paths` flag in the build script:
+1. _Set up the alias path_
+   To create the path aliasing/redirect behavior we want (e.g., `/` redirects to `/docs-site-name`), in the consuming site's `gatsby-config.js` file, we set a `--prefix-paths` flag in the build script in the `/docs` directory:
 
 ```
 // package.json
@@ -37,7 +38,8 @@ To create the path aliasing/redirect behavior we want (e.g., `/` redirects to `/
 
 ```
 
-For the purposes of this demonstration, we're calling setting the value of our prefix path to `vercelredirects`, and instructing Gatsby to use that for the `/docs` directory in its `gatsby-config.js` file:
+2. _Add pathPrefix to gatsby-config_
+   For the purposes of this demonstration, we're setting the value of our prefix path to be `/vercelredirects`, and instructing Gatsby to use that for the `/docs` directory in its `gatsby-config.js` file:
 
 ```
 // gatsby-config.js in /docs:
