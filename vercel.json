@@ -13,7 +13,7 @@
   "routes": [
     { "src": "/vercelredirects(/.*)?", "dest": "/docs$1" },
     {
-      "src": "/",
+      "src": "/*",
       "status": 301,
       "headers": { "Location": "/vercelredirects/" }
     }
