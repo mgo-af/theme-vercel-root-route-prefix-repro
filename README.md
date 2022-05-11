@@ -36,6 +36,8 @@ In order to make that work, we need each deployed site that we intend to proxy t
 
 ❌ Navigating to a path like `/docs-site-name/page-2` results in a 404, presumably because there's a mismatch between the links on the site and the actual paths to the files. **_*Our theory is that this is related to our settings in `vercel.json`.*_**
 
+✅ If we house `vercel.json` in `/docs` and use the deprecated `routes` API, we get the root route redirect and aliasing behavior we want.
+
 ### What have you done so far
 
 1. _Set up the alias path_
@@ -90,6 +92,36 @@ So we need to define a route in `vercel.json` that that proxies `/vercelredirect
 ```
 
 We've tried using the `redirects` and `rewrites` properties in different combinations with different parameters, following the instructions at [https://vercel.com/docs/project-configuration#legacy/routes/upgrading](https://vercel.com/docs/project-configuration#legacy/routes/upgrading).
+
+We can only see the redirect behavior we want if we house `vercel.json` in the `/docs` directory and use the deprecated `routes` API:
+
+```
+// this works, but only when vercel.json is housed in `/docs` and when using deprecated `routes` API:
+
+{
+  "version": 2,
+  "public": true,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "public"
+      }
+    }
+  ],
+  "routes": [
+    { "src": "/vercelredirects(/.*)?", "dest": "$1" },
+    {
+      "src": "/",
+      "status": 301,
+      "headers": { "Location": "/vercelredirects/" }
+    }
+  ]
+}
+
+
+```
 
 ### How to use this directory
 
