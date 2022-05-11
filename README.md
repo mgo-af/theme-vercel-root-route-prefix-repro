@@ -10,15 +10,47 @@ The Gatsby theme allows us to bootstrap a site in the `/docs` directory in proje
 
 We want to make our deployed docs sites available at `parentproject.com/docs-site-name`, where `docs-site-name` is the name of a docs site bootstrapped using the theme.
 
+### What we want to happen
+
+A website at `parentproject.com`, can reference the site at `parentproject.com/vercelredirects` by setting the values in the `rewrites` array in `parentproject.com`'s `vercel.json` file, so that a path like `parentproject.com/vercelredirects/page-2` points at the site built at `vercelredirects`, and paths at that site find the correct files in the build directory.
+
 ### What should happen
 
 Defining a route in `vercel.json` that proxies `/docs-site-name/*` to `/*` should mean that behind the scenes, a path like `/docs-site-name/page-2` will find `/page-2.html` in the build directory.
 
-In the consuming site's `gatsby-config.js` file, the `--prefix-paths` flag needs to be set to whatever the name of the prefix is you intend to use. For the purposes of this demonstration, we're calling this one `vercelredirects`.
+### What is currently happening
 
-This means that at `parentproject.com`, we should be able to reference the site at `parentproject.com/vercelredirects`, and a path like `parentproject.com/vercelredirects/page-2` should find the correct file in the build directory.
+In the consuming site's `gatsby-config.js` file, there's a `--prefix-paths` flag set in the build script:
 
-### What is currently happening and why is it a problem
+```
+// package.json
+
+"scripts":  {
+  "build": "gatsby build --prefix-paths"
+}
+
+```
+
+In Vercel, we set the Root directory for this project to be `docs`, and the build command runs the build command as expected.
+
+For the purposes of this demonstration, we're calling setting the value of our prefix path to `vercelredirects`, and instructing Gatsby to use that for the `/docs` directory in its `gatsby-config.js` file:
+
+```
+// gatsby-config.js in /docs:
+
+module.exports = {
+  pathPrefix: "/vercelredirect",
+  plugins: [
+    {
+      resolve: `gatsby-theme-root-prefix-route-repro`,
+      options: {},
+    },
+  ],
+};
+
+```
+
+### Why the current behavior is a problem
 
 Navigating to a path like `/docs-site-name/page-2` results in a 404, because there's a mismatch between the links on the site and the actual paths to the files.
 
