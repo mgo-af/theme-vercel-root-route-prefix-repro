@@ -2,7 +2,7 @@
 
 ### What is this
 
-An extremely minimal Gatsby theme to demonstrate root route redirects in Vercel.
+An extremely minimal Gatsby theme to demonstrate working with prefix-paths and root route redirects in Vercel.
 
 ### Why
 
@@ -15,6 +15,10 @@ Defining a route in `vercel.json` that proxies `/docs-site-name/*` to `/*` shoul
 ### What is currently happening and why is it a problem
 
 Currently, using the `--prefix-paths` in the consuming site's `gatsby-config.js` file doesn't work in deployment. So navigating to a path like `/docs-site-name/page-2` results in a 404, because there's a mismatch between the links on the site and the actual paths to the files.
+
+### What have we tried
+
+In `vercel.json`, we've tried using the `redirects` and `rewrites` properties....
 
 ### How to use this directory
 
