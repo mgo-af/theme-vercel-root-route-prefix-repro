@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "develop": "gatsby clean && gatsby develop",
-    "build": "gatsby build"
+    "build": "gatsby build --prefix-paths"
   },
   "dependencies": {
     "gatsby": "4.11.2",

@@ -6,7 +6,7 @@ An extremely minimal Gatsby theme to demonstrate working with prefix-paths and r
 
 ### Why
 
-The Gatsby theme allows us to bootstrap a site in the `/docs` directory in projects we're building.
+A Gatsby theme allows us to bootstrap a site in the `/docs` directory in projects we're building.
 
 We want to make our deployed docs sites available at `parentproject.com/docs-site-name`, where `docs-site-name` is the name of a docs site bootstrapped using the theme.
 
@@ -20,7 +20,11 @@ Defining a route in `vercel.json` that proxies `/docs-site-name/*` to `/*` shoul
 
 ### What is currently happening
 
-In the consuming site's `gatsby-config.js` file, there's a `--prefix-paths` flag set in the build script:
+Navigating to a path like `/docs-site-name/page-2` results in a 404, because there's a mismatch between the links on the site and the actual paths to the files.
+
+### What have you tried
+
+To create the redirect behavior we want, e.g., `/` redirects to `/docs-site-name`, in the consuming site's `gatsby-config.js` file, we set a `--prefix-paths` flag in the build script:
 
 ```
 // package.json
@@ -49,12 +53,6 @@ module.exports = {
 };
 
 ```
-
-### Why the current behavior is a problem
-
-Navigating to a path like `/docs-site-name/page-2` results in a 404, because there's a mismatch between the links on the site and the actual paths to the files.
-
-### What have we tried
 
 In `vercel.json`, we've tried using the `redirects` and `rewrites` properties....
 

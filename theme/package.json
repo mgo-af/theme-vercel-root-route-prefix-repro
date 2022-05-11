@@ -10,7 +10,7 @@
   "scripts": {
     "develop": "gatsby clean && gatsby develop",
     "clean": "gatsby clean",
-    "build": "gatsby build --prefix-paths"
+    "build": "gatsby build"
   },
   "main": "index.js",
   "license": "MIT",
