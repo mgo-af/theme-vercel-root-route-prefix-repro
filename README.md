@@ -9,11 +9,31 @@
 
 ### Project structure:
 
+```.
+├── README.md
+├── docs
+│   ├── content
+│   │   ├── index.mdx
+│   │   └── page-2.mdx
+│   ├── gatsby-config.js
+│   ├── package.json
+├── package.json
+├── theme
+│   ├── gatsby-config.js
+│   ├── gatsby-node.js
+│   ├── index.js
+│   ├── package.json
+│   └── src
+│       └── components
+│           └── Layout
+└── yarn.lock
+```
+
 #### `/theme`
 
 Gatsby theme that includes the SSG logic and does all the work.
 
-`gatsby-node.js` file builds each page; instructs consuming sites to house MDX files in a `/content` folder, if none exists, create that folder.
+`gatsby-node.js` file builds each page; instructs consuming sites to house MDX files in a `/content` folder, if none exists, create that folder. Each `.mdx` file is turned into a page.
 
 The logic in `gatsby-node.js` is all contained in the `createPages` function.
 
