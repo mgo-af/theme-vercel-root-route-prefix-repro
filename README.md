@@ -22,6 +22,8 @@ Defining a route in `vercel.json` that proxies `/docs-site-name/*` to `/*` shoul
 
 Instructing Vercel to redirect should allow the root route `/` at the deployment for the child site to redirect to a path alias, e.g. `/docs-site-name`; furthermore, parentsite.com/docs-site-name should proxy the deployed site as well.
 
+In order to make that work, we need each deployed site that we intend to proxy to be available at a path alias; that's not working yet.
+
 ### What is currently happening
 
 ![](https://media.giphy.com/media/iEaCrjL4efsIUfH4ck/giphy.gif)
