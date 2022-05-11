@@ -15,16 +15,16 @@
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
-    "gatsby": "^4.14.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "dependencies": {
     "@mdx-js/mdx": "1.5.5",
     "@mdx-js/react": "1.5.5",
-    "gatsby-plugin-mdx": "3.13.0",
-    "gatsby-source-filesystem": "^4.14.0",
-    "gatsby-transformer-yaml": "^4.14.0",
+    "gatsby": "4.11.2",
+    "gatsby-plugin-mdx": "1.2.22",
+    "gatsby-source-filesystem": "4.11.1",
+    "gatsby-transformer-yaml": "4.13.0",
     "mkdirp": "^1.0.4"
   }
 }
